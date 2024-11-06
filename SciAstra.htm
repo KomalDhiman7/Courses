@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            justify-content: space-between;
+            text-align: center;
+            align-items: center;
+            
+
+        }
+        h1{
+            color: white;
+            font-size: 60px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            margin-bottom: 10px;
+        }
+        h2{
+            color: white;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        .head{
+            justify-content: flex-end;
+            display: flex;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: black; 
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            font-size: 20px;
+            z-index: 1000;
+        }
+
+    
+        .headbtn{
+            background-color: transparent;
+            border: none;
+            color: inherit;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 20px;
+            padding: 15px;
+        }
+
+        .menu-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .menu-button {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: white;
+        }
+
+        .dropdown-menu {
+            display: none; 
+            position: absolute;
+            top: 30px;
+            right: 0;
+            background-color: #fff;
+            min-width: 100px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+            overflow: hidden;
+            z-index: 1;
+            padding-right: 10px;
+            margin-right: 10px;
+            margin-top: 10px;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 8px 12px;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #f0f0f0;
+        }
+        .menu-container:hover .dropdown-menu {
+            display: block;
+        }
+        .content{
+            margin-top: 60px; 
+            padding: 20px;
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            perspective: 1000px; 
+            background: #333;
+          }
+
+          .content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%; 
+            height: 100%;
+            background-image: url('https://i.pinimg.com/originals/fc/c6/0a/fcc60a6044f5ea1b7d16025b951ca307.gif'); 
+            background-size: cover;
+            background-position: center;
+            transform: scale(1.1) translateZ(-100px); 
+            filter: brightness(0.6); 
+            z-index: -1; 
+          }
+        
+          .content h1,
+          .content p {
+            z-index: 1;
+          }
+
+          .t {
+            font-weight: bold;
+            font-size: 40px; 
+            color: transparent;
+            background: linear-gradient(90deg, #8e44ad, #9b59b6, #ff6bcb, #8e44ad);
+            background-clip: text;
+            -webkit-background-clip: text; 
+            animation: sparkle 2s linear infinite;
+            background-size: 200% 200%; 
+            transition: transform 0.2s ease, filter 0.2s ease;
+            text-align: center;
+        }
+        
+        @keyframes sparkle {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .t:hover {
+            transform: scale(1.05);
+            filter: brightness(1.2); 
+        }
+
+        .exams{
+            color: rgb(255, 255, 255);
+            font-size: 20px;
+            background-color: #ac0ef0;
+            padding-left: 40px;
+            padding-right: 40px;
+            padding-top: 20px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            border: #ab79c0;
+            margin-top: 10px;
+            width: 200px;
+            height: 70px;
+        }
+        .exams:hover{
+            transform: scale(1.05);
+            filter: brightness(1.2);
+        }
+
+        .msg{
+            font-size: 25px;
+            font-family: Arial, Helvetica, sans-serif;
+            color: rgb(19, 1, 11);
+        }
+        span{
+            font-size: 15px;
+        }
+        .char{
+                background-color: #ac0ef0; 
+                color: white; 
+                padding: 10px 20px;
+                border: none; 
+                cursor: pointer; 
+                font-size: 16px; 
+                border-radius: 10px 0 10px 0; 
+                transition: background-color 0.3s;
+                margin-top: 10px;
+
+            }
+    
+            .char:hover {
+                background-color: #501832
+            }
+            p{
+                font-size: 20px;
+            }
+               
+        .j{
+            font-size: 25px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            text-decoration: underline ;
+            text-decoration-style: dashed;
+        }
+
+        .opt{
+            background-color: #ac0ef0; 
+                color: white; 
+                padding: 10px 20px;
+                border: none; 
+                cursor: pointer; 
+                font-size: 16px; 
+                border-radius: 10px 0; 
+                transition: background-color 0.3s;
+                margin-top: 10px;
+        }
+        .opt:hover{
+            background-color: #501832;
+        }
+
+            .x{
+                font-size: 20px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            
+            }
+
+            .Courses {
+                background-color: #fff; 
+                color: #333; 
+                padding: 20px; 
+                border-radius: 10px; 
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+                margin-bottom: 20px; 
+                width: 50%;
+                text-align: left;
+            }
+            
+            .offer {
+                background-color: #501832; 
+                color: white; 
+                border: none; 
+                border-radius: 50%;
+                padding: 10px 15px; 
+                cursor: pointer; 
+                font-size: 14px; 
+                transition: background-color 0.3s; 
+            }
+
+            .features{
+                display: flex; 
+                flex-direction: column; 
+                align-items: center; 
+                margin: 0 auto;
+            }
+            .enroll{
+                position: absolute; 
+                background-color: #ac0ef0;
+                color: white; 
+                padding: 10px 20px; 
+                border: none; 
+                border-radius: 5px; 
+                cursor: pointer; 
+                font-size: 16px; 
+               position: absolute;
+            }
+            .enroll:hover{
+                background-color: rgb(111, 13, 160);
+            }
+            .info{
+                margin-top: 60px; 
+            padding: 20px;
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            perspective: 1000px; 
+            background: #333;
+            }
+            .info::before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%; 
+            height: 100%; 
+            background-size: cover;
+            background-position: center;
+            transform: scale(1.1) translateZ(-100px); 
+            filter: brightness(0.6); 
+            z-index: -1; 
+                background-image: url("https://cdn.pixabay.com/photo/2023/12/28/07/44/spaceship-8473485_1280.png");
+            }
+
+            .info h1,
+            .info p {
+              z-index: 1;
+            }
+            .footer-text{
+                background-color: black;
+                color: white;
+            }
+            .info p:last-of-type {
+                color: black; 
+            }
+
+
+        .signup-container {
+            background-color: #444;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            justify-content: center;
+            display: none;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .signup-container.show {
+            display: block;
+        }
+
+        .signup-container h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .signup-container p {
+            font-size: 16px;
+            color: #bbb;
+            margin-bottom: 30px;
+           
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-size: 14px;
+            color: #ccc;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #666;
+            border-radius: 5px;
+            width: 100%;
+            outline: none;
+            background-color: #555;
+            color: #fff;
+        }
+
+        .form-group input::placeholder {
+            color: #aaa;
+        }
+
+        .signup-btn {
+            background-color: #ac0ef0;
+            color: #fff;
+            padding: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        .signup-btn:hover {
+            background-color: #8c0cc0;
+        }
+
+
+          
+    </style>
+</head>
+<body>
+    <header class="head">
+        <button class="headbtn" onclick="Institutes()">Institutes</button>
+        <button class="headbtn" onclick="courses()">Courses</button>
+        <button class="headbtn" onclick="selections()">Selections</button>
+        <div class="menu-container">
+            <button class="menu-button">•••</button>
+            <div class="dropdown-menu">
+                <a href="#info" class="headbtn">Info</a>
+                <a href="#courses" class="headbtn">Courses</a>
+                <a href="signup.html" class="headbtn" onclick="toggleSignup()">Sign-in</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <section class="content">
+        <h1>SciAstra</h1>
+        <h2>Building the Scientists of Tomorrow!</h2>
+    </section>
+
+    <!-- Options Section -->
+    <div class="option">
+        <h3 class="t">Career Option beyond JEE & NEET</h3>
+        <button class="exams">IAT Exam</button><br>
+        <button class="exams">NEST Exam</button><br>
+        <button class="exams">ISI/CMI Exam</button><br>
+        <button class="exams">UPST Exam</button><br>
+    </div>
+
+    <!-- Message Section -->
+    <h4 class="msg"><u>A good teacher is like a candle, it consumes itself to light the way for others.</u> <span><i>~Sourav Ganguly</i></span></h4>
+
+    <!-- Additional Sections -->
+    <button class="char">Zero/Minimal Fees</button><br>
+    <button class="char">Scholarships</button><br>
+    <button class="char">World Class Research Facilities</button><br>
+
+    <!-- Features and Courses Section -->
+    <div class="features">
+        <h4 class="j">Practice</h4>
+        <h3 class="t">Latest Pattern mock test</h3>
+        <button class="opt">Real Time Experience</button><br>
+        <button class="opt">Full Analysis Report</button><br>
+    </div>
+
+    <div class="features" id="courses">
+        <h4 class="j">Courses</h4>
+        <h3 class="t">Full Preparation</h3>
+        <p class="x">Ready to Learn? We've got you Covered.</p>
+        <div class="Courses">
+            <h2>Internship Workshop 2025-26</h2>
+            <ul>
+                <li>Dream of working with top researchers</li>
+                <li>Gain experience and skills for academic and professional success</li>
+                <strike>₹1500/-</strike> <strong>₹1009/-</strong> <button class="offer">32% off</button>
+                <button class="enroll">Enroll</button>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Info Section -->
+    <div class="info" id="info">
+        <h5>Available on Apple Store and Google Play</h5>
+        <address>SciAstra, 401, C-76, Sector 63, Near Police Station, Noida, 201301</address>
+        <p>support@sciastra.com</p>
+        <h5>Institutes</h5>
+        <ul>
+            <li>IISC</li>
+            <li>IISER</li>
+            <li>NISER</li>
+            <li>ISI</li>
+        </ul>
+    </div>
+
+    <!-- Signup Form -->
+    <div class="signup-container" id="signupform">
+        <h2>Sign Up</h2>
+        <p>Enter your details to create an account</p>
+        <form action="#" method="POST">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required placeholder="Full Name">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required placeholder="Email">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="Password" required placeholder="Password">
+            </div>
+            <button type="submit" class="signup-btn">Sign Up</button>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2023 SciAstra. All Rights Reserved</p>
+    </footer>
+</body>
+
+<script>
+const courses = [
+    { id: 1, name: "Internship Workshop 2025-26", price: 1500, discount: 32, discountedPrice: 1009 },
+    { id: 2, name: "Vikram Batch 1.0 2025", price: 10000, discount: 30, discountedPrice: 6999 },
+];
+
+function displayCourses() {
+    const courseContainer = document.querySelector('.features');
+    courses.forEach(course => {
+        courseContainer.innerHTML += `
+            <div class="Courses">
+                <h2 class="h">${course.name}</h2>
+                <ul>
+                    <li>Price: ₹${course.price}</li>
+                    <li>Discounted Price: ₹${course.discountedPrice}</li>
+                    <button onclick="purchaseCourse(${course.id})" class="enroll">Enroll</button>
+                </ul>
+            </div>
+        `;
+    });
+}
+
+function purchaseCourse(courseId) {
+    const selectedCourse = courses.find(course => course.id === courseId);
+    if (confirm(`Do you want to purchase ${selectedCourse.name} for ₹${selectedCourse.discountedPrice}?`)) {
+        redirectToPayment(courseId);
+    }
+}
+
+function redirectToPayment(courseId) {
+    window.location.href = `/payment.html?courseId=${courseId}`;
+}
+function fetchBlogPosts() {
+    fetch('/api/blogposts')
+        .then(response => response.json())
+        .then(posts => {
+            const blogContainer = document.getElementById('blog-container');
+            posts.forEach(post => {
+                blogContainer.innerHTML += `
+                    <article>
+                        <h2>${post.title}</h2>
+                        <p>${post.content}</p>
+                        <small>Published on: ${new Date(post.publishDate).toLocaleDateString()}</small>
+                    </article>
+                `;
+            });
+        });
+}
+document.addEventListener('DOMContentLoaded', displayCourses);
+
+
+    function toggleSignup() {
+        var signupForm = document.getElementById('signupform');
+        signupForm.classList.toggle('show');
+
+        setTimeout(function() {
+            window.location.href = "/"; 
+        }, 2000);
+    }
+    
+
+</script>
+</html>
